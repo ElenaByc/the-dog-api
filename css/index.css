@@ -69,6 +69,15 @@ h1 {
     margin: 0;
 }
 
+h2 {
+    font-family: 'Exo2 Medium Italic';
+    font-size: 26px;
+    line-height: 34px;
+    text-align: center;
+    color: var(--color-brown);
+    margin: 0;
+}
+
 
 /* ---------- Header ---------- */
 
@@ -130,8 +139,21 @@ h1 {
 
 /* ---------- Images Section ---------- */
 
+.images {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px;
+}
+
 /* ---------- Breeds Section ---------- */
 
+.breeds {
+    display: none;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px;
+}
 
 /* ---------- max-width: 940px ---------- */
 
