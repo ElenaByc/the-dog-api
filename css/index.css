@@ -1,0 +1,169 @@
+@font-face {
+    font-family: 'KaushanScript';
+    src: url("../assets/fonts/KaushanScript-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Exo2';
+    src: url("../assets/fonts/Exo2-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Exo2 Italic';
+    src: url("../assets/fonts/Exo2-Italic.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Exo2 Medium Italic';
+    src: url("../assets/fonts/Exo2-MediumItalic.ttf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Exo2 Bold';
+    src: url("../assets/fonts/Exo2-Bold.ttf");
+    font-weight: 600;
+}
+
+:root {
+    --color-white: #ffffff;
+    --color-light: #ede0d4;
+    --color-brown-l: #a9927d;
+    --color-brown: #5e503f;
+    --color-dark: #362A2A;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Exo2';
+    font-size: 16px;
+    background-color: var(--color-light);
+    color: var(--color-dark);
+}
+
+.page-wrapper {
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+h1 {
+    font-family: 'KaushanScript';
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+    color: var(--color-brown);
+    margin: 0;
+}
+
+
+/* ---------- Header ---------- */
+
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 15px 5%;
+    border-bottom: 5px solid var(--color-brown);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__logo img {
+    border-radius: 50%;
+}
+
+.header__switch-model {
+    font-family: 'Exo2 Medium Italic';
+    font-size: 20px;
+    line-height: 24px;
+
+    display: flex;
+    column-gap: 30px;
+}
+
+.header__switch-model input[type="radio"] {
+    box-shadow: 0px 0px 0px 1px var(--color-dark);
+    font-size: 1em;
+    width: 20px;
+    height: 20px;
+
+    border: 3px solid var(--color-light);
+    background-clip: border-box;
+    border-radius: 50%;
+    appearance: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.header__switch-model input[type="radio"]:checked {
+    box-shadow: 0px 0px 0px 3px var(--color-brown);
+    background-color: var(--color-dark);
+}
+
+.header__switch-model label {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+/* ---------- Images Section ---------- */
+
+/* ---------- Breeds Section ---------- */
+
+
+/* ---------- max-width: 940px ---------- */
+
+@media only screen and (max-width: 940px) {
+
+    .header {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+}
+
+/* ---------- max-width: 540px ---------- */
+
+@media only screen and (max-width: 540px) {
+
+    .header__logo {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+}
+
+/* ---------- max-width: 400px ---------- */
+
+@media only screen and (max-width: 400px) {
+
+    h1 {
+        font-size: 30px;
+        line-height: 34px;
+    }
+
+    .header__switch-model {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+}
