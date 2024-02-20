@@ -56,11 +56,9 @@ async function fetchData(url, model, container) {
       return response.json();
     })
     .then(data => {
-      console.log(data);
       data.forEach(el => appendDataToArray(el, model));
       // create html elements and append them to the section container
       container.innerHTML = '';
-      console.log(currentDataArray);
       currentDataArray.forEach(el => container.appendChild(createDataCard(el, model)));
     })
     .catch(error => {
@@ -98,6 +96,8 @@ const appendDataToArray = (data, model) => {
       const temperament = data.temperament;
       const origin = data.origin;
       const image = data.image.url;
+      const weight = data.weight.imperial;
+      const height = data.height.imperial;
       currentDataArray.push({
         'breed': name,
         'imageUrl': image,
@@ -105,7 +105,9 @@ const appendDataToArray = (data, model) => {
         'breedGroup': breedGroup,
         'lifeSpan': lifeSpan,
         'temperament': temperament,
-        'origin': origin
+        'origin': origin,
+        'weight': weight,
+        'height': height
       });
   }
 }
@@ -141,6 +143,16 @@ const createDataCard = (data, model) => {
         const breedGroup = document.createElement('p');
         breedGroup.innerHTML = `<span>Breed group:</span> ${data.breedGroup}`;
         card.appendChild(breedGroup);
+      }
+      if (data.weight) {
+        const weight = document.createElement('p');
+        weight.innerHTML = `<span>Weight(lb):</span> ${data.weight}`;
+        card.appendChild(weight);
+      }
+      if (data.height) {
+        const height = document.createElement('p');
+        height.innerHTML = `<span>Height(in):</span> ${data.height}`;
+        card.appendChild(height);
       }
       if (data.lifeSpan) {
         const lifeSpan = document.createElement('p');
