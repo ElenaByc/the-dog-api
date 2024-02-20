@@ -9,6 +9,7 @@ modelToSectionMap.set('breeds', breedsSection);
 const modelToEndpointMap = new Map();
 modelToEndpointMap.set('images', '/images/search?limit=30&');
 modelToEndpointMap.set('breeds', '/breeds?');
+
 const apiUrl = 'https://api.thedogapi.com/v1';
 const apiKey = 'live_VGn6Yc4Ii5dj8aO10q2FfFGzNejAouSMOTBhPwMNAC1FArHRJlSn0kaNEIAoKPEd';
 
@@ -47,7 +48,6 @@ const generatePageElements = (model) => {
 }
 
 async function fetchData(url, model, container) {
-
   fetch(url)
     .then(response => {
       if (!response.ok) {
@@ -91,7 +91,22 @@ const appendDataToArray = (data, model) => {
       }
       break;
     case 'breeds':
-
+      const name = data.name;
+      const bredFor = data.bred_for;
+      const breedGroup = data.breed_group;
+      const lifeSpan = data.life_span;
+      const temperament = data.temperament;
+      const origin = data.origin;
+      const image = data.image.url;
+      currentDataArray.push({
+        'breed': name,
+        'imageUrl': image,
+        'bredFor': bredFor,
+        'breedGroup': breedGroup,
+        'lifeSpan': lifeSpan,
+        'temperament': temperament,
+        'origin': origin
+      });
   }
 }
 
@@ -109,6 +124,39 @@ const createDataCard = (data, model) => {
       card.appendChild(text);
       break;
     case 'breeds':
+      card.classList.add('breeds__card');
+      const breedImg = document.createElement('img');
+      breedImg.src = data.imageUrl;
+      breedImg.alt = `Picture of ${data.breed}`;
+      card.appendChild(breedImg);
+      const breed = document.createElement('h4');
+      breed.innerText = data.breed;
+      card.appendChild(breed);
+      if (data.bredFor) {
+        const bredFor = document.createElement('p');
+        bredFor.innerHTML = `<span>Bred for:</span> ${data.bredFor}`;
+        card.appendChild(bredFor);
+      }
+      if (data.breedGroup) {
+        const breedGroup = document.createElement('p');
+        breedGroup.innerHTML = `<span>Breed group:</span> ${data.breedGroup}`;
+        card.appendChild(breedGroup);
+      }
+      if (data.lifeSpan) {
+        const lifeSpan = document.createElement('p');
+        lifeSpan.innerHTML = `<span>Life span:</span> ${data.lifeSpan}`;
+        card.appendChild(lifeSpan);
+      }
+      if (data.temperament) {
+        const temperament = document.createElement('p');
+        temperament.innerHTML = `<span>Temperament:</span> ${data.temperament}`;
+        card.appendChild(temperament);
+      }
+      if (data.origin) {
+        const origin = document.createElement('p');
+        origin.innerHTML = `<span>Origin:</span> ${data.origin}`;
+        card.appendChild(origin);
+      }
 
   }
   return card;
